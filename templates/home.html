@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <style type="text/css">
+        .btn {
+            font-size: 52px;
+        }
+    </style>
+    {% for cource in cources %}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <button type="button" style="background-color:#{{ cource.bg_color }}; border-color:#{{ cource.bg_color }}; color:#{{ cource.title_color }}" class="btn btn-primary btn-lg btn-block">{{ cource.title }}</button>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -6,11 +6,16 @@
         <!-- Bootstrap -->
          <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen"/>
         <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+        <!-- Other styles -->
+        <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" media="screen"/>
         {% block head %}
         {% endblock %}
     </head>
     <body>
         <div class="container">
+            <div class="masthead">
+                <h1 class="muted"><a href="{% url 'pm.views.home' %}">Кафедра ПМ</a></h1>
+            </div>
             {% block main %}
             {% endblock %}
         </div>

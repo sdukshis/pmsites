@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav nav-pills pull-right">
+                <li ><a href="{% url 'pm.views.cource' cource.id %}">Главная</a></li>
+                <li><a href="{% url 'pm.views.schedule' cource.id %}">Расписание</a></li>
+                <li class="active"><a href="{% url 'pm.views.progress' cource.id %}">Успеваемость</a></li>
+            </ul>
+            <h2>{{ cource }}</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+         <iframe src="{{ cource.progress_set.latest.doc }}" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>   
+        </div>
+    </div>
+{% endblock %}

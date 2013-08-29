@@ -15,6 +15,7 @@ class Cource(models.Model):
                                 default="FFE4B5")
     title_color = models.CharField(verbose_name='Цвет заколовка', max_length=8,
                                    default="8B2500")
+    lecturer = models.TextField(verbose_name='Лектор')
 
     def __unicode__(self):
         return self.short_title
@@ -68,6 +69,14 @@ class Assignment(CourceItem):
     file = models.FileField(verbose_name='Файл', upload_to='assignments/')
 
     def __unicode__(self):
-        return self.name        
+        return self.name
+
+class Progress(CourceItem):
+    class Meta:
+        get_latest_by = 'year'
+        verbose_name = 'Список успеваемости'
+        verbose_name = 'Списки успеваемости'
+    year = models.IntegerField(verbose_name='Год')
+    doc = models.URLField(verbose_name='Ссылка')
 
 

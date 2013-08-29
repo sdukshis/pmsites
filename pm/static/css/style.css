@@ -1,0 +1,11 @@
+.news {
+    background-color: #FFF8DC;
+    margin-bottom:10px;
+    padding: 10px;
+}
+
+.news h4 {
+    margin-bottom: 20px;
+    font-style:italic;
+    color:#A52A2A;
+}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav nav-pills pull-right">
+                <li class="active"><a href="{% url 'pm.views.cource' cource.id %}">Главная</a></li>
+                <li ><a href="{% url 'pm.views.schedule' cource.id %}">Расписание</a></li>
+                <li ><a href="{% url 'pm.views.progress' cource.id %}">Успеваемость</a></li>
+            </ul>
+            <h2>{{ cource }}</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Новости</h3>
+            {% for news in cource.news_set.all %}
+            <div class="news">
+                <h4>{{ news.title }}</h4>
+                {{ news.content }}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+            <h3>Полезные ресурсы</h3>
+                <div class="list-group">
+                {% for link in cource.link_set.all %}
+                    <a href="{{ link.href }}" class="list-group-item" title="{{ link.title }}">{{ link.name }}</a>
+                {% endfor %}
+                </div>
+            <h3>Материалы курса</h3>
+                <div class="list-group">
+                {% for handout in cource.handout_set.all %}
+                    <a href="{{ handout.file.url }}" class="list-group-item" >{{ handout.name }}</a>
+                {% endfor %}
+                </div>
+            <h3>Задания</h3>
+                <div class="list-group">
+                {% for assignment in cource.assignment_set.all %}
+                    <a href="{{ assignment.file.url }}" class="list-group-item" >{{ assignment.name }}</a>
+                {% endfor %}
+                </div>
+            {% if cource.lecturer %}
+            <h3>Лектор</h3>
+            {{ cource.lecturer|safe }}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

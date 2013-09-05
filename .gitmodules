@@ -1,0 +1,3 @@
+[submodule "templates/galya"]
+	path = templates/galya
+	url = https://github.com/sdukshis/galya.git

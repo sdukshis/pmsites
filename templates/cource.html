@@ -18,7 +18,7 @@
             {% for news in cource.news_set.all %}
             <div class="news">
                 <h4>{{ news.title }}</h4>
-                {{ news.content }}
+                {{ news.content | safe}}
             </div>
             {% endfor %}
         </div>
